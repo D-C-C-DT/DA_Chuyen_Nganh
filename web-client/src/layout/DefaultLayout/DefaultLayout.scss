@@ -5,6 +5,7 @@
     padding: 0 50px;
     font-size: 16px;
     color: $colorTwo !important;
+    width: 100%;
 
     &__header {
         background-color: $colorOne;
@@ -13,8 +14,15 @@
         align-items: center;
         width: 100%;
         padding: 0 0;
+        position: sticky;
+        top: 0;
+
 
         &--control {
+            div {
+                display: inline-block;
+            }
+
             a {
                 margin-right: 25px;
                 color: $colorTwo !important;
@@ -26,18 +34,15 @@
                 }
             }
 
-            a:last-child {
-                margin-right: 0;
-            }
-
             &--login button {
                 border-radius: 50rem;
                 color: $colorThree;
                 border-color: $colorThree;
-                width: 100px;
+                width: 120px;
                 height: 45px;
                 font-weight: 500;
                 font-size: 16px;
+                margin-right: 25px;
 
                 &:hover {
                     background-color: $colorThree !important;
@@ -54,7 +59,7 @@
                 color: $colorOne;
                 border-color: $colorThree;
                 background-color: $colorThree !important;
-                width: 100px;
+                width: 120px;
                 height: 45px;
                 font-weight: 500;
                 font-size: 16px;

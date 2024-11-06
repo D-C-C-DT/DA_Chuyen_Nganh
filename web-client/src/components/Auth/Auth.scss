@@ -1,0 +1,99 @@
+@import "../../baseSCSS/_variable.scss";
+
+.loginModal {
+  text-align: center !important;
+
+  .ant-modal-body {
+    margin-top: 20px;
+    height: 65vh;
+    overflow-y: auto;
+
+    /* CSS cho thanh cuộn */
+    &::-webkit-scrollbar {
+      width: 5px;
+      /* Độ rộng thanh cuộn */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      /* Màu nền của track */}
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      /* Màu của thumb */
+      border-radius: 5px;
+      /* Bo tròn các góc của thumb */
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+      /* Màu của thumb khi hover */
+    }
+  }
+
+  &__header,
+  &__footer {
+    padding: 0 50px;
+  }
+
+  &__header {
+    h2 {
+      font-size: 25px;
+    }
+
+    p {
+      color: red;
+    }
+
+  }
+
+
+  form {
+    width: 100%;
+    padding: 0 50px;
+
+    button {
+      width: 100%;
+      border-radius: 50px;
+      background-color: $colorThree;
+      border-color: $colorThree !important;
+      color: white;
+      font-weight: 500;
+
+      &:hover {
+        background-color: $colorOne !important;
+        color: $colorThree !important;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+
+  &__footer {
+    div {
+      display: inline-block;
+    }
+
+    em {
+      color: gray;
+      display: inline-block;
+    }
+
+    &--question {
+      color: $colorThree;
+      text-decoration: underline;
+    }
+
+    button {
+      border: none;
+      padding: 0;
+      color: $colorThree;
+      text-decoration: underline;
+
+
+      &:hover {
+        color: $colorThree !important;
+      }
+    }
+  }
+
+}
