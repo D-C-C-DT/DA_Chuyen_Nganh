@@ -7,6 +7,7 @@ import youtube from '../../assets/Imager/logoYoutube.jpg'
 import tiktok from '../../assets/Imager/logoTiktok.jpg'
 import Login from "../../components/Auth/Login";
 import Register from "../../components/Auth/Register";
+import SearchContent from "../../components/SearchContent";
 
 const DefaultLayout = () => {
   return (
@@ -14,6 +15,7 @@ const DefaultLayout = () => {
       <Layout className="layoutDefault">
         <Header className="layoutDefault__header">
           <div className="layoutDefault__header--logo">Logo</div>
+          <div><SearchContent></SearchContent></div>
           <div className="layoutDefault__header--control">
             <NavLink to="#">Home</NavLink>
             <NavLink to="#">About</NavLink>

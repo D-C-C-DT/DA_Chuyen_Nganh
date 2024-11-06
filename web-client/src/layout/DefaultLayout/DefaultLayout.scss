@@ -95,38 +95,47 @@
         table {
             text-align: left;
             width: 100%;
+            color: $colorTwo !important;
+
+            thead {
+                height: 35px;
+            }
+
+            tr {
+                height: 20px;
+
+                th {
+                    font-size: 20px;
+                }
+
+                th,
+                td {
+                    width: 25%;
+                    vertical-align: top;
+                }
+
+                th:nth-child(2),
+                td:nth-child(2) {
+                    width: 15%;
+                }
+
+                th:nth-child(3),
+                td:nth-child(3) {
+                    width: 40%;
+                    padding-right: 25px;
+                }
+
+            }
+
+            img {
+                width: 40px;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
         }
 
-        tr {
-            th {
-                font-size: 20px;
-            }
 
-            th,
-            td {
-                width: 25%;
-                vertical-align: top;
-            }
-
-            th:nth-child(2),
-            td:nth-child(2) {
-                width: 15%;
-            }
-
-            th:nth-child(3),
-            td:nth-child(3) {
-                width: 40%;
-                padding-right: 25px;
-            }
-
-        }
-
-        img {
-            width: 40px;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
     }
 }
