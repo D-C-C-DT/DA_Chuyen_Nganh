@@ -2,6 +2,7 @@ import { Button, Form, Input, Modal } from "antd";
 import { useState } from "react";
 import "../Auth.scss";
 import Register from "../Register";
+import Logo from "../../../assets/Imager/logof11.jpg";
 
 const Login = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,7 +26,7 @@ const Login = () => {
         className="loginModal"
       >
         <div className="loginModal__header">
-          <p>log</p>
+          <img className="loginModal__header--logo" src={Logo} alt="Logo" />
           <h2>Đăng nhập vào F11</h2>
           <p>Mỗi người nên sử dụng riêng một tài khoản, tài khoản nhiều người
             sử dụng chung sẽ bị khóa.</p>

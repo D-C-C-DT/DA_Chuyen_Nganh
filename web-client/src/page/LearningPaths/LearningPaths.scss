@@ -1,0 +1,123 @@
+@import "../../baseSCSS/_variable.scss";
+
+.learningPaths {
+  position: relative;
+  display: inline-block;
+
+  &__header,
+  &__footer {
+    width: 40%;
+  }
+
+  &__content {
+    @include display-flex();
+    justify-content: start;
+    align-items: center;
+    background-color: $colorOne;
+    margin: 100px 0;
+
+    &--frontend {
+      margin-right: 50px;
+    }
+
+    &--frontend,
+    &--backend {
+      @include display-flex();
+      justify-content: space-between;
+      align-items: center;
+      background-color: $colorOne;
+      width: 35%;
+      border-radius: 16px;
+      border: 2px solid #e8e8e8;
+      height: 250px;
+      padding: 25px;
+
+
+      >div:first-child {
+        margin-right: 50px;
+
+        p {
+          height: 70px;
+        }
+      }
+
+      button {
+        border-radius: 50px;
+        padding: 0 50px;
+        background-color: $colorThree;
+        border-color: $colorThree !important;
+        color: white;
+        font-weight: 500;
+
+        &:hover {
+          background-color: $colorTwo;
+          transition: all 0.5s ease-in-out;
+          color: $colorThree !important;
+        }
+      }
+
+      img {
+        border-radius: 50%;
+        border: 5px solid $colorThree;
+        padding: 10px;
+      }
+    }
+  }
+
+  &__footer button {
+    border-radius: 50px;
+    font-weight: 500;
+    padding: 0 50px;
+    color: $colorThree;
+    border-color: $colorThree !important;
+
+    &:hover {
+      background-color: $colorThree !important;
+      color: $colorOne !important;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/Imager/learning-paths.png');
+    width: 350px;
+    aspect-ratio: 1/1;
+    background-size: cover;
+    // background-position: center;
+    animation: fadeInUp;
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1.5s;
+    /* don't forget to set a duration! */
+  }
+
+  //Add animaitons
+  &__content {
+    &--frontend {
+      animation: fadeInUp;
+      /* referring directly to the animation's @keyframe declaration */
+      animation-duration: 0.5s;
+      /* don't forget to set a duration! */
+    }
+
+    &--backend {
+      animation: fadeInUp;
+      /* referring directly to the animation's @keyframe declaration */
+      animation-duration: 1s;
+      /* don't forget to set a duration! */
+    }
+  }
+
+  &__footer {
+    animation: fadeInUp;
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1.5s;
+    /* don't forget to set a duration! */
+  }
+
+  //END add animations
+}

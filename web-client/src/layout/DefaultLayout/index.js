@@ -8,26 +8,38 @@ import tiktok from '../../assets/Imager/logoTiktok.jpg'
 import Login from "../../components/Auth/Login";
 import Register from "../../components/Auth/Register";
 import SearchContent from "../../components/SearchContent";
+import Logo from "../../assets/Imager/logof11.jpg";
 
 const DefaultLayout = () => {
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.layoutDefault__header'); // Thay thế bằng class của header
+    if (window.scrollY > 0) {
+      header.classList.add('layoutDefault__header--scrolled');
+    } else {
+      header.classList.remove('layoutDefault__header--scrolled');
+    }
+  });
+
   return (
     <>
       <Layout className="layoutDefault">
         <Header className="layoutDefault__header">
-          <div className="layoutDefault__header--logo">Logo</div>
+          <NavLink href="/"><img src={Logo} alt="Logo" className="layoutDefault__header--logo" /></NavLink>
           <div><SearchContent></SearchContent></div>
           <div className="layoutDefault__header--control">
-            <NavLink to="#">Home</NavLink>
-            <NavLink to="#">About</NavLink>
+            <NavLink to="/">Trang chủ</NavLink>
+            <NavLink to="/learning-paths">Lộ Trình</NavLink>
             <NavLink to="#">Service</NavLink>
             <NavLink to="#">Contact US</NavLink>
             <div className="layoutDefault__header--control--login"><Login /></div>
             <div className="layoutDefault__header--control--signUp"><Register /></div>
           </div>
         </Header>
-        <Content>
-          <Outlet></Outlet>
-        </Content>
+        <div className="layoutDefault__content">
+          <Content>
+            <Outlet></Outlet>
+          </Content>
+        </div>
         <Footer className="layoutDefault__footer">
           <table>
             <thead>
@@ -69,7 +81,6 @@ const DefaultLayout = () => {
               </tr>
             </tbody>
           </table>
-          <br></br>
           <br></br>
           <em>© 2018 - 2024 F8. Nền tảng học lập trình hàng đầu Việt Nam</em>
         </Footer>

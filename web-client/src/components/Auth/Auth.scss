@@ -8,6 +8,7 @@
     height: 65vh;
     overflow-y: auto;
 
+
     /* CSS cho thanh cuộn */
     &::-webkit-scrollbar {
       width: 5px;
@@ -44,6 +45,13 @@
 
     p {
       color: red;
+    }
+
+    &--logo {
+      width: 120px;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
     }
 
   }
