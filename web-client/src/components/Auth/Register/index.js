@@ -2,7 +2,8 @@ import { Button, Form, Input, Modal } from "antd";
 import { useState } from "react";
 import "../Auth.scss";
 import Login from "../Login";
-import Logo from "../../../assets/Imager/logof11.jpg";
+import Logo from "../../../assets/Images/logof11.jpg";
+import { NavLink } from "react-router-dom";
 
 
 const Register = () => {
@@ -77,7 +78,7 @@ const Register = () => {
           </Form.Item>
 
           <Form.Item
-            label=""
+            label={<strong>Mật khẩu</strong>}
             name="password"
             rules={[
               {
@@ -90,7 +91,23 @@ const Register = () => {
               style={{ borderRadius: "50px" }}
               placeholder="Mật Khẩu" />
           </Form.Item>
+
+          <Form.Item
+            label={<strong>Nhập lại mật khẩu</strong>}
+            name="rePassword"
+            rules={[
+              {
+                required: true,
+                message: 'Trường này không được để trống!',
+              },
+            ]}
+          >
+            <Input.Password
+              style={{ borderRadius: "50px" }}
+              placeholder="Mật Khẩu" />
+          </Form.Item>
           <br></br>
+
           <Form.Item>
             <Button htmlType="submit">
               Đăng ký
@@ -100,7 +117,8 @@ const Register = () => {
         <div className="loginModal__footer">
           <div>Bạn chưa có tài khoản? <div onClick={() => setModalOpen(false)}><Login /></div></div>
           <p className="loginModal__footer--question">Quên mật khẩu?</p>
-          <em>Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với điều khoản sử dụng của chúng tôi</em>
+          <em>Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với
+            <NavLink to="/terms" onClick={() => setModalOpen(false)}>điều khoản</NavLink> sử dụng của chúng tôi</em>
         </div>
 
       </Modal>

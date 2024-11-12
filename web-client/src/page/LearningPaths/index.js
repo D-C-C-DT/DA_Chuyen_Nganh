@@ -1,16 +1,14 @@
 import { Button } from "antd";
 import "./LearningPaths.scss";
-import LearningPathsFE from "../../assets/Imager/learning-paths-fe.png";
-import LearningPathsBE from "../../assets/Imager/learning-paths-ba.png";
+import LearningPathsFE from "../../assets/Images/learning-paths-fe.png";
+import LearningPathsBE from "../../assets/Images/learning-paths-ba.png";
 import { NavLink } from "react-router-dom";
 import 'animate.css';
 
 
 const LearningPaths = () => {
-
   return (
     <div className="learningPaths">
-      <br></br>
       <div className="learningPaths__header">
         <h1>Lộ trình học</h1>
         <p>Để bắt đầu một cách thuận lợi, bạn nên tập trung vào một lộ trình học.

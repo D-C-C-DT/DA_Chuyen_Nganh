@@ -1,8 +1,6 @@
 @import "../../baseSCSS/_variable.scss";
 
 .layoutDefault {
-    min-height: 100vh;
-    // padding: 0 50px;
     font-size: 16px;
     color: $colorTwo !important;
     width: 100%;
@@ -10,7 +8,7 @@
     &__header,
     &__content,
     &__footer {
-        padding: 0 50px;
+        padding: 0 55px;
     }
 
     &__header {
@@ -105,7 +103,7 @@
     &__footer {
         font-size: 16px;
         width: 100%;
-        padding: 24px 50px;
+        padding: 24px 55px;
         margin-top: 100px;
         background-color: $colorThree;
 
@@ -167,7 +165,11 @@
                 margin-right: 10px;
             }
         }
+    }
 
-
+    &__floatButton {
+        span {
+            color: $colorThree !important;
+        }
     }
 }

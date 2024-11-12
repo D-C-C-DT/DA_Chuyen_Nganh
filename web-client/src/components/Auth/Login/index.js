@@ -2,7 +2,8 @@ import { Button, Form, Input, Modal } from "antd";
 import { useState } from "react";
 import "../Auth.scss";
 import Register from "../Register";
-import Logo from "../../../assets/Imager/logof11.jpg";
+import Logo from "../../../assets/Images/logof11.jpg";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -61,7 +62,7 @@ const Login = () => {
           </Form.Item>
 
           <Form.Item
-            label=""
+            label={<strong>Mật khẩu</strong>}
             name="password"
             rules={[
               {
@@ -84,7 +85,8 @@ const Login = () => {
         <div className="loginModal__footer">
           <div>Bạn chưa có tài khoản?  <div onClick={() => setModalOpen(false)}><Register /></div></div>
           <p className="loginModal__footer--question">Quên mật khẩu?</p>
-          <em>Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với điều khoản sử dụng của chúng tôi</em>
+          <em>Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với
+            <NavLink to="/terms" onClick={() => setModalOpen(false)}>điều khoản</NavLink> sử dụng của chúng tôi</em>
         </div>
       </Modal>
     </>
