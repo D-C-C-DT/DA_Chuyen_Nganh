@@ -1,4 +1,4 @@
-import AboutUS from '../components/AboutUS';
+import AboutUS from '../page/AboutUS';
 import DefaultLayout from '../layout/DefaultLayout';
 import Home from '../page/Home';
 import LearningPaths from '../page/LearningPaths';

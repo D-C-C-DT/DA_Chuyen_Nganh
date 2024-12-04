@@ -22,6 +22,7 @@ const Terms = () => {
     <div className="terms">
       <div className="terms__content">
         <h1>Điều khoản sử dụng</h1>
+        <hr></hr>
         <div ref={ref1} className={`${inView1 ? 'animate__animated' : ''}`}>
           <h2>Quy định chung</h2>
           <p>Website (viết tắt: F11) do Công ty cổ phần công nghệ giáo dục F11 sở hữu và vận hành. Hoạt động trên website bao gồm: Ban quản trị website và Học viên có đăng ký sử dụng tài khoản đã được phê duyệt bởi ban quản trị website F11.</p>

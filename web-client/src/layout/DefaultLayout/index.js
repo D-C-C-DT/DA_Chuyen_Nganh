@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { FloatButton, Layout, Space } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import "./DefaultLayout.scss";
@@ -12,6 +12,8 @@ import Logo from "../../assets/Images/logof11.jpg";
 import { ArrowUpOutlined } from "@ant-design/icons";
 
 const DefaultLayout = () => {
+  const location = useLocation();
+
   window.addEventListener('scroll', () => {
     const header = document.querySelector('.layoutDefault__header'); // Thay thế bằng class của header
     if (window.scrollY > 0) {
@@ -36,7 +38,7 @@ const DefaultLayout = () => {
             <div className="layoutDefault__header--control--signUp"><Register /></div>
           </div>
         </Header>
-        <div className="layoutDefault__content">
+        <div className={location.pathname === "/about-us" ? "layoutDefault__content--noPadding" : "layoutDefault__content"} >
           <Content>
             <br></br>
             <Outlet></Outlet>
@@ -90,7 +92,7 @@ const DefaultLayout = () => {
           className="layoutDefault__floatButton"
           onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           icon={<ArrowUpOutlined color="white" />} />
-      </Layout>
+      </Layout >
     </>
   )
 };

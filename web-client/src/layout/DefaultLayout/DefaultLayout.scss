@@ -11,6 +11,11 @@
         padding: 0 55px;
     }
 
+    &__content--noPadding {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     &__header {
         background-color: $colorOne;
         @include display-flex();

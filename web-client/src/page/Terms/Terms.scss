@@ -16,18 +16,36 @@
       margin: 40px 0;
     }
 
-    div:nth-child(odd).animate__animated {
-      animation: fadeInLeft;
-      /* referring directly to the animation's @keyframe declaration */
-      animation-duration: 1s;
-      /* don't forget to set a duration! */
-    }
+    div {
+      &.animate__animated {
+        &:nth-child(odd) {
+          animation: fadeInLeft;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 1s;
+          /* don't forget to set a duration! v*/
+        }
 
-    div:nth-child(even).animate__animated {
-      animation: fadeInRight;
-      /* referring directly to the animation's @keyframe declaration */
-      animation-duration: 1s;
-      /* don't forget to set a duration! */
+        &:nth-child(even) {
+          animation: fadeInRight;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 1s;
+          /* don't forget to set a duration! v*/
+        }
+
+        &:nth-child(3) {
+          animation: fadeInUp;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 1s;
+          /* don't forget to set a duration! */
+        }
+
+        &:nth-child(4) {
+          animation: fadeInUp;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 1.5s;
+          /* don't forget to set a duration! */
+        }
+      }
     }
   }
 

@@ -25,6 +25,7 @@ const Privacy = () => {
     <div className="privacy">
       <div className="privacy__content">
         <h1>Chính sách bảo vệ thông tin (Privacy)</h1>
+        <hr></hr>
         <div ref={ref1} className={`${inView1 ? 'animate__animated' : ''}`}>
           <h2>1. Thu thập thông tin cá nhân</h2>
           <p>
