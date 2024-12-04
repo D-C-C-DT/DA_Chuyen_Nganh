@@ -5,10 +5,10 @@
 *.pack
 *.pack.old
 
-# API_Server/.vs
-# API_Server/API_Server/bin/
-# API_Server/API_Server/obj/
-# API_Server/API_Server/appsettings.json
+API_Web/.vs
+API_Web/API_Web/bin/
+API_Web/API_Web/obj/
+API_Web/API_Web/appsettings.json
 
 .vscode/
 web-client/node_modules/.bin/
