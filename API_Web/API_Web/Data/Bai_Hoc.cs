@@ -20,6 +20,8 @@ namespace API_Web.Models
 
         [ForeignKey("Chuong")]
         public int Id_Chuong { get; set; }
-        public Chuong Chuong { get; set; } 
+        public Chuong Chuong { get; set; }
+        public ICollection<Test> Tests { get; set; }
+
     }
 }

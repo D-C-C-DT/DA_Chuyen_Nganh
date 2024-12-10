@@ -17,7 +17,6 @@ namespace API_Web.Models
 
         public int OrderIndex { get; set; } // Thứ tự bài học trong chương
 
-        [ForeignKey("Chuong")]
         public int Id_Chuong { get; set; }
    
     }
@@ -41,8 +40,7 @@ namespace API_Web.Models
 
         public int OrderIndex { get; set; } // Thứ tự bài học trong chương
 
-        [ForeignKey("Chuong")]
         public int Id_Chuong { get; set; }
-        public string Name { get; set; }
+  
     }
 }

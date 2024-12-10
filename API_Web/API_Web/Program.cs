@@ -25,6 +25,7 @@ builder.Services.AddScoped<IAccountRepository, AccontRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IChuongRepository, EFChuongRepository>();
 builder.Services.AddScoped<IBaiHocRepository, EFBaiHocRepository>();
+builder.Services.AddScoped<ITest_Question_Answer, EFTest_Question_Answer>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<MyDbContext>().AddDefaultTokenProviders();

@@ -38,13 +38,15 @@ namespace API_Web.Repository
                 UrlVideo = newBaihoc.UrlVideo,
                 Duration = newBaihoc.Duration,
                 OrderIndex = newBaihoc.OrderIndex,
-                Name = baihoc.Name,
+                Id_Chuong = newBaihoc.Id_Chuong
             };
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var baihoc = _context.Bai_Hocs.SingleOrDefault(dm => dm.Id_Lesson == id);
+            _context.Remove(baihoc);
+            await _context.SaveChangesAsync();
         }
         /// <summary>
         /// Timf baif hocj theo id
@@ -83,9 +85,22 @@ namespace API_Web.Repository
             }).ToList();
         }
 
-        public Task Update(BaiHocVN chuong)
+        public async Task Update(BaiHocVN Baihoc)
         {
-            throw new NotImplementedException();
+            var baihocs = _context.Bai_Hocs.SingleOrDefault(c => c.Id_Lesson == Baihoc.Id_Lesson);
+
+            if(baihocs != null)
+            {
+                baihocs.Title_Lesson = Baihoc.Title_Lesson;
+                baihocs.UrlVideo = Baihoc.UrlVideo;
+                baihocs.Duration = Baihoc.Duration;
+                baihocs.OrderIndex = Baihoc.OrderIndex;
+                baihocs.Id_Chuong = Baihoc.Id_Chuong;
+                 await _context.SaveChangesAsync();
+
+            }
+
+
         }
     }
 }

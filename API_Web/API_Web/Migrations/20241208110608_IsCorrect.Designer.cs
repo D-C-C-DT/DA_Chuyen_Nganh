@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Web.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20241128015638_avatarUser")]
-    partial class avatarUser
+    [Migration("20241208110608_IsCorrect")]
+    partial class IsCorrect
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,6 @@ namespace API_Web.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AvatarUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -102,6 +101,150 @@ namespace API_Web.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("API_Web.Data.CorrectAnswer", b =>
+                {
+                    b.Property<int>("Id_CorrectAnswer")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_CorrectAnswer"));
+
+                    b.Property<string>("Content_Answer")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Id_Question")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsCorrect")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id_CorrectAnswer");
+
+                    b.HasIndex("Id_Question");
+
+                    b.ToTable("CorrectAnswers");
+                });
+
+            modelBuilder.Entity("API_Web.Data.Question", b =>
+                {
+                    b.Property<int>("Id_Question")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Question"));
+
+                    b.Property<string>("Content_Question")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("Id_Test")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsEssay")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id_Question");
+
+                    b.HasIndex("Id_Test");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("API_Web.Data.UserTest", b =>
+                {
+                    b.Property<int>("Id_UserTest")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_UserTest"));
+
+                    b.Property<DateTime>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id_Test")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SubmittedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id_UserTest");
+
+                    b.HasIndex("Id_Test");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTest");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Bai_Hoc", b =>
+                {
+                    b.Property<int>("Id_Lesson")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Lesson"));
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id_Chuong")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title_Lesson")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("UrlVideo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id_Lesson");
+
+                    b.HasIndex("Id_Chuong");
+
+                    b.ToTable("Bai_Hocs");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Chuong", b =>
+                {
+                    b.Property<int>("Id_Chuong")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Chuong"));
+
+                    b.Property<Guid>("Id_KH")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id_Chuong");
+
+                    b.HasIndex("Id_KH");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Chuong");
+                });
+
             modelBuilder.Entity("API_Web.Models.Danh_Muc", b =>
                 {
                     b.Property<int>("Id_DM")
@@ -117,6 +260,9 @@ namespace API_Web.Migrations
 
                     b.HasKey("Id_DM");
 
+                    b.HasIndex("Ten_DM")
+                        .IsUnique();
+
                     b.ToTable("Danh_Muc");
                 });
 
@@ -126,16 +272,13 @@ namespace API_Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Chuong")
-                        .HasColumnType("int");
-
                     b.Property<double>("Gia")
                         .HasColumnType("float");
 
                     b.Property<byte>("GiamGia")
                         .HasColumnType("tinyint");
 
-                    b.Property<int?>("Id_DM")
+                    b.Property<int>("Id_DM")
                         .HasColumnType("int");
 
                     b.Property<string>("Mieu_ta")
@@ -147,9 +290,6 @@ namespace API_Web.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("Tong_Thoi_Gian")
-                        .HasColumnType("int");
-
                     b.Property<string>("Url_Img")
                         .HasColumnType("nvarchar(max)");
 
@@ -157,7 +297,61 @@ namespace API_Web.Migrations
 
                     b.HasIndex("Id_DM");
 
+                    b.HasIndex("Ten_Khoa_Hoc")
+                        .IsUnique();
+
                     b.ToTable("Khoa_Hoc");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Test", b =>
+                {
+                    b.Property<int>("Id_Test")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Test"));
+
+                    b.Property<int>("Bai_HocsId_Lesson")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id_Lesson")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsEssay")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title_Test")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id_Test");
+
+                    b.HasIndex("Bai_HocsId_Lesson");
+
+                    b.ToTable("Tests");
+                });
+
+            modelBuilder.Entity("API_Web.Models.User_KhoaHoc", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("ID_KH")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "ID_KH");
+
+                    b.HasIndex("ID_KH");
+
+                    b.ToTable("User_KhoaHocs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -293,13 +487,108 @@ namespace API_Web.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("API_Web.Data.CorrectAnswer", b =>
+                {
+                    b.HasOne("API_Web.Data.Question", "Question")
+                        .WithMany("CorrectAnswers")
+                        .HasForeignKey("Id_Question")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("API_Web.Data.Question", b =>
+                {
+                    b.HasOne("API_Web.Models.Test", "Test")
+                        .WithMany("Questions")
+                        .HasForeignKey("Id_Test")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+                });
+
+            modelBuilder.Entity("API_Web.Data.UserTest", b =>
+                {
+                    b.HasOne("API_Web.Models.Test", "Test")
+                        .WithMany()
+                        .HasForeignKey("Id_Test")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("API_Web.Data.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Bai_Hoc", b =>
+                {
+                    b.HasOne("API_Web.Models.Chuong", "Chuong")
+                        .WithMany("Bai_Hocs")
+                        .HasForeignKey("Id_Chuong")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Chuong");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Chuong", b =>
+                {
+                    b.HasOne("API_Web.Models.Khoa_Hoc", "Khoa_hocs")
+                        .WithMany("Chuongs")
+                        .HasForeignKey("Id_KH")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Khoa_hocs");
+                });
+
             modelBuilder.Entity("API_Web.Models.Khoa_Hoc", b =>
                 {
                     b.HasOne("API_Web.Models.Danh_Muc", "DanhMuc")
                         .WithMany("Khoa_Hocs")
-                        .HasForeignKey("Id_DM");
+                        .HasForeignKey("Id_DM")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("DanhMuc");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Test", b =>
+                {
+                    b.HasOne("API_Web.Models.Bai_Hoc", "Bai_Hocs")
+                        .WithMany("Tests")
+                        .HasForeignKey("Bai_HocsId_Lesson")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bai_Hocs");
+                });
+
+            modelBuilder.Entity("API_Web.Models.User_KhoaHoc", b =>
+                {
+                    b.HasOne("API_Web.Models.Khoa_Hoc", "Khoa_Hocs")
+                        .WithMany("User_KhoaHocs")
+                        .HasForeignKey("ID_KH")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API_Web.Data.ApplicationUser", "User")
+                        .WithMany("User_KhoaHocs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Khoa_Hocs");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -353,9 +642,41 @@ namespace API_Web.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("API_Web.Data.ApplicationUser", b =>
+                {
+                    b.Navigation("User_KhoaHocs");
+                });
+
+            modelBuilder.Entity("API_Web.Data.Question", b =>
+                {
+                    b.Navigation("CorrectAnswers");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Bai_Hoc", b =>
+                {
+                    b.Navigation("Tests");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Chuong", b =>
+                {
+                    b.Navigation("Bai_Hocs");
+                });
+
             modelBuilder.Entity("API_Web.Models.Danh_Muc", b =>
                 {
                     b.Navigation("Khoa_Hocs");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Khoa_Hoc", b =>
+                {
+                    b.Navigation("Chuongs");
+
+                    b.Navigation("User_KhoaHocs");
+                });
+
+            modelBuilder.Entity("API_Web.Models.Test", b =>
+                {
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,5 +10,6 @@ namespace API_Web.Data
         public string? AvatarUrl { get; set; }
 
         public ICollection<User_KhoaHoc> User_KhoaHocs { get; set; }
+ 
     }
 }

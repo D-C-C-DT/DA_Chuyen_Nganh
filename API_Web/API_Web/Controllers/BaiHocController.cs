@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Khoa_Hocr/Chuong/[controller]")]
     [ApiController]
     public class BaiHocController : ControllerBase
     {
@@ -60,6 +60,36 @@ namespace API_Web.Controllers
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] BaiHocVN Baihoc)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != Baihoc.Id_Lesson)
+            {
+                return BadRequest("Chapter ID mismatch.");
+            }
+
+            await _baihocRepository.Update(Baihoc);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _baihocRepository.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
             }
         }
     }

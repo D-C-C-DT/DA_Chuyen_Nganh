@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Khoa_Hocr/[controller]")]
     [ApiController]
     public class ChuongController : ControllerBase
     {
